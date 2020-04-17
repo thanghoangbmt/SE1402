@@ -16,7 +16,7 @@ import static util.MyToys.cF;
 public class MyToysTest {
 
     @Test
-    public void testSuccessfullCases() {
+    public void testSuccessfulLower10Cases() {
         assertEquals(1, cF(0));
         assertEquals(2, cF(2));
         assertEquals(6, cF(3));
@@ -25,10 +25,24 @@ public class MyToysTest {
         assertEquals(720, cF(6));
     }
     
+    @Test
+    public void testSuccessfulGreater10Cases() {
+        assertEquals(3_628_800, cF(10));
+        assertEquals(39_916_800, cF(11));
+    }
+    
     @Test(expected = IllegalArgumentException.class)
-    public void testExeptionCases() {
+    public void testExeptionNegagtiveCases() {
         //ko có value để assert do hàm cF() ném ra ngoại lệ
         cF(-5);
+        cF(-100);
+        cF(-1);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testExeptionUpperBoundCases() {
+        //ko có value để assert do hàm cF() ném ra ngoại lệ
+        cF(16);
         cF(100);
     }
 }
